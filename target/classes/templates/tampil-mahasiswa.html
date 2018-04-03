@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<title>Home</title>
+	</head>
+	<body>
+		<div th:replace="fragments/fragment :: header"></div>
+		<h3 th:text="'Lihat Data Mahasiswa - ' + ${student.npm}"></h3>
+			<table>
+				<thead>
+					<th></th>
+					<th></th>
+				</thead>
+				<tbody>
+					<tr>
+						<td><h6>NIK</h6></td>
+						<td style="text-indent: 7em;" th:text="': ' + ${student.npm}"></td>
+					</tr>
+					<tr>
+						<td><h6>Nama</h6></td>
+						<td style="text-indent: 7em;" th:text="': ' + ${student.nama}"></td>
+					</tr>
+					<tr>
+						<td><h6>Tempat/Tanggal Lahir</h6></td>
+						<td style="text-indent: 7em;" th:text="': ' + ${student.tempat_lahir} + '/' + ${student.tanggal_lahir}"></td>
+					</tr>
+					<tr>
+						<td><h6>Program Studi</h6></td>
+						<td style="text-indent: 7em;" th:text="': ' + ${prodi.nama_prodi}"></td>
+					</tr>
+					<tr>
+						<td><h6>Fakultas</h6></td>
+						<td style="text-indent: 7em;" th:text="': ' + ${fakultas.nama_fakultas}"></td>
+					</tr>
+					<tr>
+						<td><h6>Universitas</h6></td>
+						<td style="text-indent: 7em;" th:text="': ' + ${univ.nama_univ}"></td>
+					</tr>
+					<tr>
+						<td><h6>Jenis Kelamin</h6></td>
+						<td style="text-indent: 7em;" th:text="${student.jenis_kelamin == 1} ? ': Laki-laki' : ': Perempuan' "></td>
+					</tr>
+					<tr>
+						<td><h6>Agama</h6></td>
+						<td style="text-indent: 7em;" th:text="': ' + ${student.agama}"></td>
+					</tr>
+					<tr>
+						<td><h6>Golongan Darah</h6></td>
+						<td style="text-indent: 7em;" th:text="': ' + ${student.golongan_darah}"></td>
+					</tr>
+					<tr>
+						<td><h6>Tahun Masuk</h6></td>
+						<td style="text-indent: 7em;" th:text="': ' + ${student.tahun_masuk}"></td>
+					</tr>
+					<tr>
+						<td><h6>Jalur Masuk</h6></td>
+						<td style="text-indent: 7em;" th:text="': ' + ${student.jalur_masuk}"></td>
+					</tr>
+					<tr>
+						<td><h6>Status</h6></td>
+						<td style="text-indent: 7em;" th:text="': ' + ${student.status}"></td>
+						<td>
+							<a th:href="'/mahasiswa/ubah/' + ${student.npm}">
+					   			<button class="btn btn-primary">Update</button>
+					   		</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+	</body>
+</html>

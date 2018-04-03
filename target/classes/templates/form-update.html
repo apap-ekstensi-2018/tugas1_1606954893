@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Ubah Data Mahasiswa</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="/css/datePicker/bootstrap-datepicker3.min.css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link rel="stylesheet" href="/css/w3.css"></link>
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="/js/datePicker/bootstrap-datepicker.min.js"></script>
+	<div th:replace="fragments/fragment :: header"></div>
+</head>
+
+<body>
+	<form class="w3-container w3-card-4" action="/mahasiswa/ubah/submit" method="post">
+		<h2>Ubah Mahasiswa</h2>
+		<div>
+			<h6>Nama Lengkap</h6>
+			<input class="w3-input w3-border w3-animate-input" type="text" style="width:30%" name="nama" th:value="${student.nama}" required="required"/><br/>
+		</div>
+		<div>
+			<h6>Tempat Lahir</h6>
+			<input class="w3-input w3-border w3-animate-input" type="text" style="width:30%" name="tempat_lahir" th:value="${student.tempat_lahir}" required="required"/><br/>
+		</div>
+		<div>
+			<h6>Tangal Lahir</h6>
+			<input class="w3-input w3-border tanggal_lahir" type="text" style="width:30%" name="tanggal_lahir" th:value="${student.tanggal_lahir}" required="required"/><br/>
+		</div>
+		<div>
+		<h6>Jenis Kelamin</h6>
+		<select class="w3-select w3-border" type="text" style="width:30%" name="jenis_kelamin" required="required">
+			<option th:value="${student.jenis_kelamin}" th:selected="true" th:text="${student.jenis_kelamin == 1} ? 'Laki-laki' : 'Perempuan'"></option>
+			<option value="1" th:if="${student.jenis_kelamin != 1}" th:text="Laki-laki"></option>
+			<option value="0" th:if="${student.jenis_kelamin != 0}" th:text="Perempuan"></option>
+		</select>
+		</div>
+		<p></p>
+		<div>
+			<h6>Agama</h6>
+			<select class="w3-select w3-border" type="text" style="width:30%" name="agama" required="required">
+				<option th:value="${student.agama}" th:selected="true" th:text="${student.agama}"></option>
+				<option value="Islam" th:if="${student.agama != 'Islam'}" th:text="Islam"></option>
+				<option value="Katolik" th:if="${student.agama != 'Katolik'}"  th:text="Katolik"></option>
+				<option value="Protestan" th:if="${student.agama != 'Protestan'}" th:text="Protestan"></option>
+				<option value="Hindu" th:if="${student.agama != 'Hindu'}" th:text="Hindu"></option>
+				<option value="Budha" th:if="${student.agama != 'Budha'}" th:text="Budha"></option>
+				<option value="Konghucu" th:if="${student.agama != 'Konghucu'}" th:text="Konghucu"></option>
+		 	</select>
+	 	</div>
+		<p></p>
+		<div>
+		<h6>Golongan Darah</h6>
+		<select class="w3-select w3-border" type="text" style="width:30%" name="golongan_darah" required="required">
+ 			<option th:selected="true" th:value="${student.golongan_darah}" th:text="${student.golongan_darah}"></option>
+ 			<option value="AB-" th:if="${student.golongan_darah != 'AB-'}" th:text="'AB-'"></option>
+ 			<option value="A-" th:if="${student.golongan_darah != 'A-'}" th:text="'A-'"></option>
+ 			<option value="B-" th:if="${student.golongan_darah != 'B-'}" th:text="'B-'"></option>
+ 			<option value="O+" th:if="${student.golongan_darah != 'O+'}" th:text="'O+'"></option>
+ 			<option value="B+" th:if="${student.golongan_darah != 'B+'}" th:text="'B+'"></option>
+ 			<option value="O-" th:if="${student.golongan_darah != 'O-'}" th:text="'O-'"></option>
+ 			<option value="A+" th:if="${student.golongan_darah != 'A+'}" th:text="'A+'"></option>
+ 			<option value="AB+" th:if="${student.golongan_darah != 'AB+'}" th:text="'AB+'"></option>
+		</select>
+		</div>
+		<p></p>
+		<div>
+			<h6>Tahun Masuk</h6>
+			<input class="w3-input w3-border tahun_masuk" type="text" style="width:30%" name="tahun_masuk" th:value="${student.tahun_masuk}" required="required"/><br/>
+		</div>
+		<div>
+			<h6>Jalur Masuk</h6>
+			<select class="w3-select w3-border" type="text" style="width:30%" name="jalur_masuk" required="required">
+	 			<option th:selected="true" th:value="${student.jalur_masuk}" th:text="${student.jalur_masuk}"></option>
+	 			<option value="Undangan Reguler/SNMPTN" th:if="${student.jalur_masuk != 'Undangan Reguler/SNMPTN'}" th:text="'Undangan Reguler/SNMPTN'"></option>
+	 			<option value="Ujian Tulis Mandiri" th:if="${student.jalur_masuk != 'Ujian Tulis Mandiri'}" th:text="'Ujian Tulis Mandiri'"></option>
+	 			<option value="Undangan Paralel/PPKB" th:if="${student.jalur_masuk != 'Undangan Paralel/PPKB'}" th:text="'Undangan Paralel/PPKB'"></option>
+	 			<option value="Ujian Tulis Bersama/SBMPTN" th:if="${student.jalur_masuk != 'Ujian Tulis Bersama/SBMPTN'}" th:text="'Ujian Tulis Bersama/SBMPTN'"></option>
+	 			<option value="Undangan Olimpiade" th:if="${student.jalur_masuk != 'Undangan Olimpiade'}" th:text="'Undangan Olimpiade'"></option>
+			</select>
+		</div>
+		<p></p>
+		<div>
+			<h6>Id Program Studi</h6>
+			<select class="w3-select w3-border" type="text" style="width:30%" name="id_prodi" required="required">
+				<option th:selected="true" th:value="${student.id_prodi}" th:text="${student.id_prodi}"></option>
+	 			<option th:each="id : ${idStudent}" th:value="${id}" th:text="${id}"></option>
+			</select>
+		</div>
+		<p></p>
+		<button type="submit" class="btn btn-success">Save</button>
+	</form>
+</body>
+</html>
+<script>
+	$('.tanggal_lahir').datepicker({
+		format: "yyyy-mm-dd"
+	});
+</script>
+<script>
+	$('.tahun_masuk').datepicker({
+	    format: "yyyy",
+	    minViewMode: 2
+	});
+</script>
+
+
+

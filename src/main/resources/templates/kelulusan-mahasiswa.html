@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Presentase Kelulusan</title>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+	<link rel="stylesheet" href="/css/datePicker/bootstrap-datepicker3.min.css"/>
+	<link rel="stylesheet" href="/css/w3.css"></link>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script src="/js/datePicker/bootstrap-datepicker.min.js"></script>
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<form class="w3-container w3-card-4" action="/kelulusan" method="get">
+		<h2>Presentase Kelulusan Mahasiswa</h2>
+		<div>
+			<h6>Tahun</h6>
+			<input class="w3-input w3-border thn" type="text" style="width:30%" name="thn"/><br/>
+		</div>
+		<div>
+			<h6>Id Program Studi</h6>
+			<select class="w3-select w3-border" type="text" style="width:30%" name="prodi" required="required">
+				<option th:selected="true" th:disabled="true" value="">Pilih id prodi</option>
+	 			<option th:each="id : ${idStudent}" th:value="${id}" th:text="${id}"></option>
+			</select>
+		</div>
+		<p></p>
+		<button type="submit" class="btn btn-success">Lihat</button>
+	</form>
+</body>
+</html>
+<script>
+	$('.thn').datepicker({
+	    format: "yyyy",
+	    minViewMode: 2
+	});
+</script>

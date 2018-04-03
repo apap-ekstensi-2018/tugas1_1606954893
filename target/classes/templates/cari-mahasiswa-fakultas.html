@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+	<title>Cari Mahasiswa</title>
+	<link rel="stylesheet" href="/css/w3.css"></link>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<div th:replace="fragments/fragment :: header"></div>
+	<form class="w3-container w3-card-4" action="/mahasiswa/cari" method="get">
+		<h2>Cari Mahasiswa</h2>
+		<div>
+			<h6>Universitas</h6>
+			<select class="w3-select w3-border" type="text" style="width:30%" name="univ" required="required">
+		 		<option th:selected="true" th:value="${idUniversitas.id}" th:text="${idUniversitas.nama_univ}"></option>
+			</select>
+		</div>
+		<p></p>
+		<div>
+			<h6>Fakultas</h6>
+			<select class="w3-select w3-border" type="text" style="width:30%" name="fakultas" required="required">
+	 			<option th:selected="true" th:disabled="true" value="">Pilih fakultas</option>
+		 		<option th:each="faculty : ${fak}" th:value="${faculty.id}" th:text="${faculty.nama_fakultas}"></option>
+			</select>
+		</div>
+		<p></p>
+		<button type="submit" class="btn btn-success">Cari</button>
+	</form>
+</body>
+</html>
