@@ -2,6 +2,8 @@ package com.example.service;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,33 +16,25 @@ import com.example.model.Universitas;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-@Service
-public class StudentServiceDatabase implements StudentService
-{
-    @Autowired
+@Service("studentService")
+public class StudentServiceDatabase implements StudentService {
+
+	@Autowired
     private StudentMapper studentMapper;
 
+	private Logger logger = LoggerFactory.getLogger(StudentServiceDatabase.class);
 
     @Override
     public Mahasiswa selectStudent (String npm)
     {
-        log.info ("select student with npm {}", npm);
+		logger.info("select student with npm {}\", npm");
         return studentMapper.selectStudent(npm);
     }
-
-
-    @Override
-    public List<Mahasiswa> selectAllStudents ()
-    {
-        log.info ("select all students");
-        return studentMapper.selectAllStudents ();
-    }
-
 
 	@Override
 	public ProgramStudi selectProdi (int id) 
 	{
-		log.info ("select student with id_prodi {}", id);
+		logger.info("select student with id_prodi {}", id);
         return studentMapper.selectProdi (id);
 	}
 
@@ -48,14 +42,14 @@ public class StudentServiceDatabase implements StudentService
 	@Override
 	public Fakultas selectFakultas (int id) 
 	{
-		log.info ("select student with id_fakultas {}", id);
+		logger.info("select student with id_fakultas {}", id);
         return studentMapper.selectFakultas (id);
 	}
 
 
 	@Override
 	public Universitas selectUniversitas (int id_univ) {
-		log.info("select student with id_univ {}", id_univ);
+		logger.info("select student with id_univ {}", id_univ);
 		return studentMapper.selectUniversitas(id_univ);
 	}
 
@@ -69,7 +63,7 @@ public class StudentServiceDatabase implements StudentService
 
 	@Override
 	public String selectNpmStudents (String npm) {
-		log.info("select student with npm {}", npm);
+		logger.info("select student with npm {}", npm);
 		return studentMapper.selectNpmStudents(npm);
 	}
 

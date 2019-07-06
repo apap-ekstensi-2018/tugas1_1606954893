@@ -9,11 +9,8 @@ import com.example.model.Mahasiswa;
 import com.example.model.ProgramStudi;
 import com.example.model.Universitas;
 
-public interface StudentService
-{
+public interface StudentService {
 	Mahasiswa selectStudent (String npm);
-
-	List<Mahasiswa> selectAllStudents();
 	
 	ProgramStudi selectProdi (int id);
 	
